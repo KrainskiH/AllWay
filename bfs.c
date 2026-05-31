@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#define MAX 100
+#define MAX 20
 //Base para alteração
 void bfs(int matriz[MAX][MAX], int vertices, int origem)
 {
