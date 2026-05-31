@@ -14,10 +14,12 @@ void bfs(int matriz[MAX][MAX], int vertices, int origem);
 /*Inicializa a matriz com zero*/
 void inicializarGrafo(Grafo *g, int vertices)
 {
+     int i;
+     int j;
 g->numVertices = vertices;
-  for(int i = 0; i < vertices; i++)
+  for(i = 0; i < vertices; i++)
  {
- for(int j = 0; j < vertices; j++)
+ for(j = 0; j < vertices; j++)
 {
 g->matriz[i][j] = 0;
 }
@@ -32,24 +34,24 @@ g->matriz[origem][destino] = peso;
 /* Exibe a matriz de adjacência*/
 void exibirMatriz(Grafo *g)
 {
+     int i;
  printf("\n MATRIZ DE ADJACENCIA\n\n");
- printf("     ");
-  for(int i = 0; i < g->numVertices; i++)
- {
- printf("%4d", i);
- }
- printf("\n");
- 
-  for(int i = 0; i < g->numVertices; i++)
-  {
- printf("%4d ", i);
 
-  for(int j = 0; j < g->numVertices; j++)
-{
- printf("%4d", g->matriz[i][j]);
+printf("     ");
+for (int i = 0; i < g->numVertices; i++) {
+    printf("%4d", i);
 }
- printf("\n");
-  }
+printf("\n");
+
+for (int i = 0; i < g->numVertices; i++) {
+    printf("%4d", i);
+
+    for (int j = 0; j < g->numVertices; j++) {
+        printf("%4d", g->matriz[i][j]);
+    }
+
+    printf("\n");
+}
 }
 
 int main()
@@ -79,19 +81,19 @@ int main()
  printf("3 - Simular entrega (BFS)\n");
  printf("4 - Sair\n");
  printf("Opcao: ");
- 
+
  scanf("%d", &opcao);
 
   switch(opcao)
   {
  case 1:
-  {  
+  {
   int origem;
   int destino;
   int distancia;
 
  printf("\nLocais disponiveis: 0 ate %d\n",g.numVertices - 1);
- 
+
  printf("Origem: ");
  scanf("%d", &origem);
 
