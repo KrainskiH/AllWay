@@ -9,6 +9,8 @@ typedef struct
  int matriz[MAX][MAX];
 } Grafo;
 
+void bfs(int matriz[MAX][MAX], int vertices, int origem);
+
 /*Inicializa a matriz com zero*/
 void inicializarGrafo(Grafo *g, int vertices)
 {
@@ -74,7 +76,8 @@ int main()
  printf("\n MENU \n");
  printf("1 - Cadastrar rota\n");
  printf("2 - Exibir rede\n");
- printf("3 - Sair\n");
+ printf("3 - Simular entrega (BFS)\n");
+ printf("4 - Sair\n");
  printf("Opcao: ");
  
  scanf("%d", &opcao);
@@ -125,16 +128,35 @@ break;
 }
 
   case 3:
- {
- printf("\nEncerrando sistema...\n");
-break;
- }
+{
+    int origem;
+
+    printf("\nLocais disponiveis: 0 ate %d\n", g.numVertices - 1);
+    printf("Digite o local de origem para iniciar a entrega: ");
+    scanf("%d", &origem);
+
+    if (origem >= 0 && origem < g.numVertices)
+    {
+        bfs(g.matriz, g.numVertices, origem);
+    }
+    else
+    {
+        printf("\nLocal de origem invalido!\n");
+    }
+
+    break;
+}
+   case 4:
+{
+    printf("\nEncerrando sistema...\n");
+    break;
+}
 default:
 {
 printf("\nOpcao invalida!\n");
 }
   }
- } while(opcao != 3);
+ } while(opcao != 4);
 
   return 0;
 }
