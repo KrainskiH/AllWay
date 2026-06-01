@@ -19,6 +19,7 @@ g->matriz[i][j] = 0;
 void adicionarAresta(Grafo *g, int origem, int destino, int peso)
 {
 g->matriz[origem][destino] = peso;
+g->matriz[destino][origem] = peso;
 }
 
 /* Exibe a matriz de adjacência*/
